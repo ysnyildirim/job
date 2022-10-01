@@ -14,9 +14,7 @@ import java.util.Date;
 
 @RequiredArgsConstructor
 @Service
-
 public class JobService {
-
     private final JobRepository jobRepository;
 
     public static JobDto toDto(Job job) throws NullPointerException {
@@ -31,16 +29,18 @@ public class JobService {
     }
 
     public Page<Job> findAll(Pageable pageable) {
-
         return jobRepository.findAll(pageable);
+    }
+
+    public Job save(CreateJobDto dto, long userId) {
+        Job job = new Job();
+        return getJobInform(dto, userId, job);
     }
 
     private Job getJobInform(CreateJobDto dto, long userId, Job job) {
         job.setName(dto.getName());
         job.setParentId(dto.getParentId());
         job.setIsActive(dto.getIsActive());
-
-
         if (job.getId() == null) {
             job.setCreatedUserId(userId);
             job.setCreatedDate(new Date());
@@ -51,23 +51,16 @@ public class JobService {
         return jobRepository.save(job);
     }
 
-    public Job save(CreateJobDto dto, long userId) {
-        Job job = new Job();
-        return getJobInform(dto, userId, job);
-    }
-
-
-    public Job findById(Long id) throws JobNotFoundException {
-        return jobRepository.findById(id).orElseThrow(JobNotFoundException::new);
-    }
-
     public Job replace(long id, CreateJobDto dto, long userId) throws JobNotFoundException {
         Job job = findById(id);
         return getJobInform(dto, userId, job);
     }
 
+    public Job findById(Long id) throws JobNotFoundException {
+        return jobRepository.findById(id).orElseThrow(JobNotFoundException::new);
+    }
+
     public void delete(Job job) {
         jobRepository.delete(job);
     }
-
 }

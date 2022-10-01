@@ -19,11 +19,9 @@ import javax.validation.Valid;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value = "/api/prs/v1/jobs")
-
+@RequestMapping(value = "/api/job/v1/jobs")
 public class JobController {
     private final JobService jobService;
-
     private final Mapper<Job, JobDto> mapper = new Mapper<>(JobService::toDto);
 
     @GetMapping
@@ -53,7 +51,6 @@ public class JobController {
                                   @Valid @RequestBody CreateJobDto dto) throws JobNotFoundException {
         jobService.replace(id, dto, authenticatedUserId);
         return ResponseEntity.ok().body("Meslek bilgisi güncellendi.");
-
     }
 
     @DeleteMapping(value = "/{id}")
