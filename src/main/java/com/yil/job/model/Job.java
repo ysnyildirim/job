@@ -25,8 +25,7 @@ public class Job implements IEntity {
     @Id
     @SequenceGenerator(name = "JOB_SEQUENCE_GENERATOR",
             schema = "PRS",
-            sequenceName = "SEQ_JOB_ID",
-            allocationSize = 1)
+            sequenceName = "SEQ_JOB_ID")
     @GeneratedValue(generator = "JOB_SEQUENCE_GENERATOR")
     @Column(name = "ID")
     private Long id;
