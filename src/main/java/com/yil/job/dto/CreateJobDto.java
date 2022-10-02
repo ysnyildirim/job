@@ -12,13 +12,10 @@ import javax.validation.constraints.NotBlank;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class CreateJobDto {
     @NotBlank
     @Length(min = 1, max = 1000)
     private String name;
     private Integer parentId;
     private Boolean isActive;
-
-
 }

@@ -7,18 +7,13 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class JobDto implements Serializable {
     private Long id;
     private String name;
     private Integer parentId;
     private Boolean isActive;
-
-
 }
-

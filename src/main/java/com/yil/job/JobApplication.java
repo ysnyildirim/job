@@ -10,9 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 @OpenAPIDefinition(info = @Info(title = "Job Api", version = "1.0", description = "Yıldırım Information"))
 @SpringBootApplication
 public class JobApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(JobApplication.class, args);
     }
-
 }

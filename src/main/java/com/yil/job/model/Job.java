@@ -15,12 +15,10 @@ import java.util.Date;
         indexes = {
                 @Index(name = "IDX_JOB_ID", columnList = "ID")
         }
-
 )
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Job implements IEntity {
     @Id
     @SequenceGenerator(name = "JOB_SEQUENCE_GENERATOR",
@@ -46,5 +44,4 @@ public class Job implements IEntity {
     private Date lastModifyDate;
     @Column(name = "LAST_MODIFY_USER_ID")
     private Long lastModifyUserId;
-
 }
