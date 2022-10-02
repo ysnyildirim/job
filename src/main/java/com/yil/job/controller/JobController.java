@@ -41,7 +41,7 @@ public class JobController {
     public ResponseEntity<String> create(@RequestHeader(value = ApiConstant.AUTHENTICATED_USER_ID) Long authenticatedUserId,
                                          @Valid @RequestBody CreateJobDto dto) throws JobNotFoundException {
         jobService.save(dto, authenticatedUserId);
-        return ResponseEntity.created(null).body("Meslek bilgisi eklendi");
+        return ResponseEntity.status(HttpStatus.CREATED).body("Meslek bilgisi eklendi");
     }
 
     @PutMapping("/{id}")
